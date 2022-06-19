@@ -18,6 +18,22 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+app.get("/api/", function (req, res) {
+  var mia_data = null;
+  try{
+    if(req.date == ""){
+      mia_data = new Date();
+    } else {
+     mia_data = new Date(req.date);
+    }
+  } catch(e){
+    res.send({ error : "Invalid Date" });
+  }
+  var unix_key = Number(mia_data.getTime()/1000);
+  var stringa = mia_data.date.toString();
+
+  res.send({unix: unix_key, utc: stringa});
+});
 
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
