@@ -19,12 +19,14 @@ app.get("/", function (req, res) {
 });
 
 app.get("/api/:date?", function (req, res) {
+  //console.log(req);
+  //console.log(req.params.date);
   var mia_data = new Date();
   try{
-    if(req.date == ""){
+    if(req.params.date == ""){
       mia_data = new Date();
     } else {
-     mia_data = new Date(req.date);
+     mia_data = new Date(req.params.date);
     }
   } catch(e){
     res.send({ error : "Invalid Date" });
