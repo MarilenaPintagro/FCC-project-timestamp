@@ -18,7 +18,7 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/api/", function (req, res) {
+app.get("/api", function (req, res) {
   var mia_data = new Date();
   try{
     if(req.date == ""){
