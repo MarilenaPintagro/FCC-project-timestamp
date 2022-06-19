@@ -19,7 +19,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/api/", function (req, res) {
-  var mia_data = null;
+  var mia_data = new Date();
   try{
     if(req.date == ""){
       mia_data = new Date();
@@ -30,7 +30,7 @@ app.get("/api/", function (req, res) {
     res.send({ error : "Invalid Date" });
   }
   var unix_key = Number(mia_data.getTime()/1000);
-  var stringa = mia_data.date.toString();
+  var stringa = mia_data.toString();
 
   res.send({unix: unix_key, utc: stringa});
 });
